@@ -1,13 +1,9 @@
 from flask import Flask
 
-from api import api_bp
-from views import main_bp
+from config import Config
+from app import create_app
 
-app = Flask(__name__)
-
-app.config['JSON_AS_ASCII'] = False
-app.register_blueprint(api_bp)
-app.register_blueprint(main_bp)
+app: Flask = create_app(Config)
 
 
 if __name__ == '__main__':
