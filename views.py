@@ -36,23 +36,6 @@ def users_page(username):
     return render_template('user-feed.html', posts=user_posts, username=username)
 
 
-@main_bp.route('/migrate', methods=['GET'])
-def migrate():
-    db.session.execute(
-        text('CREATE TABLE IF NOT EXISTS test ('
-             'id SERIAL PRIMARY KEY,'
-             'data VARCHAR'
-             ');'
-        )
-    )
-    db.session.execute(
-        text("INSERT INTO test (data) VALUES ('one'), ('two'), ('three')"
-        )
-    )
-    db.session.commit()
-    return 'OK'
-
-
 @main_bp.route('/test_db')
 def test_db():
     result = db.session.execute(
