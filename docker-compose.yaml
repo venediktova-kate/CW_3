@@ -15,7 +15,7 @@ services:
         condition: service_healthy
   postgres_db:
     image: postgres
-    environement:
+    environment:
       - POSTGRES_PASSWORD=db_password
       - POSTGRES_USER=db_user
       - POSTGRES_DB=db_name
